@@ -15,7 +15,12 @@ for f in $result; do
   BACKUP_DIR=$SCRIPT_DIR/$profile/$f
   if [[ $f == *"ws-cloudtrail-logs"* ]]; then
     echo "It's there!"
+  elif [[ $f == *"u2u-images"* ]]; then
+    echo "Again"
+  elif [[ $f == *"elasticbeanstalk"* ]]; then
+    echo "Elastic"
   else
+    echo $BACKUP_DIR
     mkdir -p $BACKUP_DIR
     $aws s3 sync s3://$f $BACKUP_DIR --profile=$profile
   fi
